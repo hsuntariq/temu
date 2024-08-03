@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<ul class="list-unstyled fw-bold gap-4 d-flex flex-column p-4 text-white fs-5">
+<ul class="list-unstyled fw-medium gap-4 d-flex flex-column p-4 text-white fs-5">
     <li>
         <div class="dropdown">
             <span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,8 +31,8 @@
                 Categories
             </span>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Add Category</a></li>
-                <li><a class="dropdown-item" href="#">View Category</a></li>
+                <li><a class="dropdown-item" href="./add-categories.php?n=categories">Add Category</a></li>
+                <li><a class="dropdown-item" href="./view-category.php?n=view categories">View Category</a></li>
                 <li><a class="dropdown-item" href="#">View Categories Analytics</a></li>
             </ul>
         </div>

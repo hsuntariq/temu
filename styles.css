@@ -55,6 +55,10 @@ nav {
   background-color: #fe7731 !important;
 }
 
+.text-orange {
+  color: #fe7731 !important;
+}
+
 @media only screen and (max-width: 800px) {
   /* .front-image {
     background-size: contain;
