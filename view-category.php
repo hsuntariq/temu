@@ -1,6 +1,11 @@
 <?php 
-    session_start()
+    session_start();
 ?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,8 +74,10 @@
                                         alt="">
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="./update-category.php?id=<?php echo $row['id'] ?>&n=update category&category_name=<?php echo $row['category_name']?>&category_sub=<?php echo $row['sub_category_name']?>&category_price=<?php echo $row['price'] ?>&category_image=category_images/<?php echo $row['image'] ?>"
+                                        class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
                                 </td>
+
                                 <td>
                                     <a href="./delete-category.php?id=<?php echo $row['id'] ?>"
                                         class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
@@ -80,7 +87,19 @@
 
                             <?php 
                                     }}
+
+                                    
                                         ?>
+
+                            <?php include './boot_js.php';
+                    unset($_SESSION['empty_name']);
+                    unset($_SESSION['empty_sub_name']);
+                    unset($_SESSION['empty_price']);
+                    unset($_SESSION['empty_filename']);
+                    unset($_SESSION['not_allowed_ext']);    
+                    unset($_SESSION['category_error']);    
+    
+    ?>
                         </tbody>
                     </table>
                 </div>
