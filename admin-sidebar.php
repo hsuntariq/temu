@@ -28,6 +28,18 @@
     <li>
         <div class="dropdown">
             <span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Deals and Offers
+            </span>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="./add-deals.php?n=Deals and Offers">Add Deals</a></li>
+                <li><a class="dropdown-item" href="./view-deals.php?n=View Deals">View Deals</a></li>
+                <li><a class="dropdown-item" href="#">View Deals Analytics</a></li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div class="dropdown">
+            <span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Categories
             </span>
             <ul class="dropdown-menu">

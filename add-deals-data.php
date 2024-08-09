@@ -5,13 +5,14 @@ session_start();
     $current_page = $_SERVER['HTTP_REFERER'];
     // extract data form the form
     $name = $_POST['name'];
-    $id = $_POST['id'];
-    $sub_name = $_POST['sub_name'];
+    $discount = $_POST['discount'];
     $price = $_POST['price'];
+    $time= $_POST['time'];
+    $status= $_POST['status'];
     // extract image from the form
     $filename = $_FILES['image']['name'];
     $tmp_name = $_FILES['image']['tmp_name'];
-    $allowed_exts = ['jpg','jpeg','gif'];
+    $allowed_exts = ['jpg','jpeg','gif','png'];
     $break = explode('.',$filename);
     $ext = end($break);
 
@@ -20,11 +21,14 @@ session_start();
     if($name == ''){
         $_SESSION['empty_name'] = 'Please enter category name';
     }
-    else if($sub_name == ''){
+    else if($discount == ''){
         $_SESSION['empty_sub_name'] = 'Please enter sub category';
     }
     else if($price == ''){
         $_SESSION['empty_price'] = 'Please enter price';
+    }
+    else if($time == ''){
+        $_SESSION['empty_time'] = 'Please enter time';
     }
     else if($filename == ''){
         $_SESSION['empty_file'] = 'Please choose a file';
@@ -35,25 +39,23 @@ session_start();
     else{
 
      // move the images to the folder
-     move_uploaded_file($tmp_name,'./category_images/' . $filename);
+     move_uploaded_file($tmp_name,'./deal_images/' . $filename);
 
      // add data to the backend
-     $insert = "UPDATE category SET category_name = '{$name}', sub_category_name = '{$sub_name}',price=$price, image='{$filename}' WHERE id = $id";
+     $insert = "INSERT INTO deals (name,discount,price,time,image,status) VALUES ('{$name}','{$discount}',$price,'{$time}','{$filename}',$status)";
 
      try{
          mysqli_query($connection,$insert);
-         $_SESSION['category_success'] = 'Category updated Successfully🎁';
+         $_SESSION['deals_success'] = 'Deals Inserted Successfully🎁';
      }catch(mysqli_sql_exception $e){
          if($e->getCode() == 1064){
-            $_SESSION['category_error'] = 'Duplicate Entry';
+            $_SESSION['deals_error'] = 'Duplicate Entry';
          }else{
-            echo "<pre>";
-            print_r($e);
-            echo "</pre>"; 
+             echo "error";
          }
      }
 
  }
-  header("Location: $base_url/view-category.php?n=view%20categories");
+ header("Location: $current_page");
 
 ?>

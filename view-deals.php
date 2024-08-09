@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include './boot_css.php'?>
     <link rel="stylesheet" href="./styles.css">
-    <title>Temu | view categories</title>
+    <title>Temu | view deals</title>
 </head>
 
 <body>
@@ -43,22 +43,23 @@
                 <?php include './admin-header.php' ?>
 
                 <div class="my-4 container">
-                    <table class="table table-bordered text-center table-striped text-capitalize">
+                    <table class="table table-bordered text-center  table-striped text-capitalize">
                         <thead style="background: #FE7731;">
                             <tr>
                                 <th>id</th>
-                                <th>Category </th>
-                                <th>sub Category</th>
-                                <th>Starting price</th>
+                                <th>Deals </th>
+                                <th>List Price</th>
+                                <th>Discount price</th>
                                 <th>image</th>
-                                <th>update</th>
+                                <th>Status</th>
+                                <th>Update Status </th>
                                 <th>delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
                                 include './config.php';
-                                $select = "SELECT * FROM category";
+                                $select = "SELECT * FROM deals";
                                 $result = mysqli_query($connection,$select);
                                 if(mysqli_num_rows($result) > 0){
                                     while($row = mysqli_fetch_assoc($result)){
@@ -66,16 +67,17 @@
                             <tr>
 
                                 <td> <?php echo $row['id'] ?> </td>
-                                <td> <?php echo $row['category_name'] ?> </td>
-                                <td> <?php echo $row['sub_category_name'] ?> </td>
-                                <td> Rs. <?php echo $row['price'] ?> </td>
-                                <td>
-                                    <img width="40px" height="40px" src="./category_images/<?php echo $row['image'] ?>"
-                                        alt="">
+                                <td> <?php echo $row['name'] ?> </td>
+                                <td> Rs.<?php echo $row['price'] ?> </td>
+                                <td> Rs. <?php echo $row['discount'] ?> </td>
+                                <td> Rs. <?php echo $row['discount'] ?> </td>
+                                <td class="d-flex align-items-center justify-content-center gap-2">
+                                    <?php 
+                                            echo $row['status'] == 1 ? ' <div class="p-1 rounded-circle bg-success"></div> active' : ' <div class="bg-secondary p-1 rounded-circle"></div> InActive'
+                                        ?>
                                 </td>
                                 <td>
-                                    <a href="./update-category.php?id=<?php echo $row['id'] ?>&n=update category&category_name=<?php echo $row['category_name']?>&category_sub=<?php echo $row['sub_category_name']?>&category_price=<?php echo $row['price'] ?>&category_image=category_images/<?php echo $row['image'] ?>"
-                                        class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
                                 </td>
 
                                 <td>
