@@ -1,0 +1,120 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.text-sm {
+  font-size: 0.7rem;
+}
+
+.all {
+  background-color: #acadae;
+}
+
+.menu-icon {
+  display: none;
+  transform: translateY(-5px);
+}
+
+.search-bar2 {
+  display: none !important;
+}
+
+nav {
+  justify-content: space-around;
+}
+
+.underlay {
+  position: fixed !important;
+  top: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  transition: all 0.4s ease-in;
+  transform: translateX(-100%);
+  display: none;
+}
+
+.sidebar {
+  transition: all 0.3s;
+}
+
+.front-image {
+  background: url("https://aimg.kwcdn.com/material-put/1f797028e8/e6cc3cfe-9832-4f1d-a938-f5908ce346fa.png?imageView2/q/70/format/webp"),
+    orange;
+  height: 50vh;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+
+.from {
+  background-color: #fee3cb !important;
+  color: orange;
+  padding: 0.3rem;
+  border-radius: 10px;
+  margin-top: -1rem;
+}
+
+.sidebar {
+  height: 100vh !important;
+  background-color: #fe7731 !important;
+}
+
+.text-orange {
+  color: #fe7731 !important;
+}
+
+.b-orange {
+  background-color: #fe7731 !important;
+}
+
+@media only screen and (max-width: 800px) {
+  /* .front-image {
+    background-size: contain;
+  } */
+  .location,
+  .language,
+  .returns {
+    display: none !important;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .underlay {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .search-bar {
+    display: none !important;
+  }
+
+  nav {
+    justify-content: flex-start !important;
+  }
+
+  .search-bar2 {
+    display: flex !important;
+    width: 100%;
+    margin: 0.5rem auto;
+  }
+
+  .cart {
+    position: absolute;
+    right: 0;
+  }
+
+  .sign-in {
+    position: absolute;
+    right: 10%;
+  }
+}
