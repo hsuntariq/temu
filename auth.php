@@ -1,3 +1,13 @@
+<?php 
+    session_start();
+    include './config.php';
+    if(isset($_SESSION['username'])){
+        header("Location: $base_url");
+    }
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +28,39 @@
 
 <body>
 
+
+    <?php 
+        if(isset($_SESSION['invalid_user'])){
+    ?>
+
+    <div style="width: 20%;background:#FE7731;top:20px;left:50%;transform:translateX(-50%);transition:all 0.9s;overflow:hidden"
+        class="flash-message text-center text-white fw-medium p-2 rounded-pill position-fixed ">
+        <i style="clip-path: circle();" class="bi bi-x text-white fw-bolder p-2 bg-danger"></i>
+        <?php echo $_SESSION['invalid_user'] ?>
+    </div>
+
+    <?php
+
+}
+    unset($_SESSION['invalid_user']);
+?>
+    <?php 
+        if(isset($_SESSION['strong_password_error'])){
+    ?>
+
+    <div style="width: 50%;background:#FE7731;top:20px;left:50%;transform:translateX(-50%);transition:all 0.9s;overflow:hidden"
+        class="flash-message text-center text-white fw-medium p-2 rounded-2 position-fixed ">
+        <i style="clip-path: circle();" class="bi bi-x text-white fw-bolder p-2 bg-danger"></i>
+        <?php echo $_SESSION['strong_password_error'] ?>
+    </div>
+
+    <?php
+
+}
+    unset($_SESSION['strong_password_error']);
+?>
+
+
     <div class="container-fluid d-flex justify-content-center align-items-center"
         style="background-color: #F4F4F7;height:100vh">
 
@@ -37,19 +80,19 @@
                     <p class="text-center my-3">
                         Or use your account
                     </p>
-                    <form action="">
+                    <form action="./login.php" method="POST">
 
-                        <input type="email" placeholder="Enter your email..." class="form-control my-2"
-                            style="background-color: #F5F5F5;">
-                        <input type="password" placeholder="Enter your password..." class="form-control mt-2"
-                            style="background-color: #F5F5F5;">
+                        <input required type="email" name="email" placeholder="Enter your email..."
+                            class="form-control my-2" style="background-color: #F5F5F5;">
+                        <input required type="password" name="password" placeholder="Enter your password..."
+                            class="form-control mt-2" style="background-color: #F5F5F5;">
+                        <p class="text-center fw-bold p-0">
+                            Forgot your password?
+                        </p>
+                        <button style="background-color: #FE7731;" class="rounded-pill shadow btn w-50 d-block mx-auto">
+                            Sign In
+                        </button>
                     </form>
-                    <p class="text-center fw-bold p-0">
-                        Forgot your password?
-                    </p>
-                    <button style="background-color: #FE7731;" class="rounded-pill shadow btn w-50 d-block mx-auto">
-                        Sign In
-                    </button>
                 </div>
                 <div class="sign-up-form bg-white p-5 w-50 d-flex flex-column position-absolute">
 
@@ -64,23 +107,24 @@
                     <p class="text-center my-3">
                         Or use your account
                     </p>
-                    <form action="">
+                    <form action="./sign-up.php" method="POST">
 
-                        <input type="text" name="name" placeholder="Enter your name..." class="form-control my-2"
-                            style="background-color: #F5F5F5;">
-                        <input type="email" name="email" placeholder="Enter your email..." class="form-control my-2"
-                            style="background-color: #F5F5F5;">
-                        <input type="password" name="password" placeholder="Enter your password..."
+                        <input required type="text" name="name" placeholder="Enter your name..."
+                            class="form-control my-2" style="background-color: #F5F5F5;">
+                        <input required type="email" name="email" placeholder="Enter your email..."
+                            class="form-control my-2" style="background-color: #F5F5F5;">
+                        <input required type="password" name="password" placeholder="Enter your password..."
                             class="form-control mt-2" style="background-color: #F5F5F5;">
-                        <input type="text" name="phone" placeholder="Enter your phone..." class="form-control mt-2"
-                            style="background-color: #F5F5F5;">
+                        <input required type="text" name="phone" placeholder="Enter your phone..."
+                            class="form-control mt-2" style="background-color: #F5F5F5;">
+                        <p class="text-center fw-bold p-0">
+                            Already a user ? <span class="text-primary fw-bold login"
+                                style="cursor: pointer;">Login</span>
+                        </p>
+                        <button style="background-color: #FE7731;" class="rounded-pill shadow btn w-50 d-block mx-auto">
+                            Sign Up
+                        </button>
                     </form>
-                    <p class="text-center fw-bold p-0">
-                        Already a user ? <span class="text-primary fw-bold login" style="cursor: pointer;">Login</span>
-                    </p>
-                    <button style="background-color: #FE7731;" class="rounded-pill shadow btn w-50 d-block mx-auto">
-                        Sign Up
-                    </button>
                 </div>
                 <div class="right w-50 rounded-3 rounded-start-0  d-flex flex-column gap-3 p-5 justify-content-center align-items-center"
                     style="background:radial-gradient(#FE7731,#FE7531,#FE3731);height:517px;">
@@ -111,6 +155,8 @@
         let greeting = document.querySelector('.greeting')
         let greeting_text = document.querySelector('.greeting-text')
         let login = document.querySelector('.login')
+        let flash = document.querySelector('.flash-message');
+
         sign_up_form.style.visibility = 'hidden'
         sign_up_form.style.opacity = '0'
         // sign_up_form.style.zIndex = '-1'
@@ -162,6 +208,12 @@
 
 
         })
+
+
+        setTimeout(() => {
+            flash.style.transform = 'translate(-50%,-100px) scale(0)'
+            flash.style.opacity = 0
+        }, 2000);
         </script>
 
 </body>

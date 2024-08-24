@@ -43,10 +43,35 @@
 
 
         <div class="sign-in">
-            <p class="p-0 m-0 text-sm">
-                Hello,sign in
-            </p>
-            <h6 class="text-sm fw-bolder m-0 p-0">Accounts & Lists</h6>
+            <?php 
+                if(isset($_SESSION['username'])){
+                    
+                    $isImage = 'https://i0.wp.com/rssoeroto.ngawikab.go.id/wp-content/uploads/2022/07/user-dummy-removebg.png?ssl=1';
+                    
+                    if(isset($_SESSION['user_image'])){
+                        $isImage = $_SESSION['user_image'] == NULL ? 'https://i0.wp.com/rssoeroto.ngawikab.go.id/wp-content/uploads/2022/07/user-dummy-removebg.png?ssl=1' : $_SESSION['user_image'];
+                    }
+
+
+                    echo "<div class='dropdown '>
+                    <button class='text-capitalize dropdown-toggle text-white font-medium bg-transparent border-0' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                      <img width='30px' height='30px' src='{$isImage}' > 
+                      Salam {$_SESSION['username']} <br>
+                      <span class='w-100'>{$_SESSION['unique_name']}</span>  
+                    </button>
+                    <ul class='dropdown-menu'>
+                        <li><a class='dropdown-item' href='#'> <i class='bi bi-copy me-2 text-info'></i> Update Profile</a></li>
+                        <li><a class='dropdown-item' href='./logout.php'> <i class='bi bi-power text-danger me-2'></i> Logout</a></li>
+                    </ul>
+                    </div>";
+                }else{
+                    echo "<a href='./auth.php' class='p-0 m-0 text-sm text-white fw-medium text-decoration-none'>
+                     Hello,sign in
+                    </a><br>
+                    <a href='./auth.php' class='text-sm text-white fw-medium text-decoration-none fw-bolder m-0 p-0'>Accounts & Lists</a>";
+                }
+            ?>
+
         </div>
         <div class="returns">
             <p class="p-0 m-0 text-sm">

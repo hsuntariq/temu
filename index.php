@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -160,7 +163,7 @@
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_assoc($result)){
             ?>
-            <div class="col-lg-3">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                 <div class="card border-0 shadow my-2  p-2">
                     <div class="d-flex flex-column gap-4">
 
@@ -241,7 +244,8 @@
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_assoc($result)){
             ?>
-            <div class="col-lg-3">
+            <a href="./single-product.php?id=<?php echo $row['id'] ?>&name=<?php echo $row['name'] ?>&discount_price=<?php echo $row['discount'] ?>&actual_price=<?php echo $row['price'] ?>&description=<?php echo $row['description'] ?>&image=<?php echo $row['image'] ?>&video=<?php echo $row['video'] ?>&category=<?php echo $row['category'] ?>&rating=<?php echo $row['rating'] ?>"
+                class="col-xl-3 text-dark text-decoration-none col-lg-4 col-md-6   ">
                 <div style="height: 400px;" class="card desc-card border-0 shadow my-2  p-2 ">
                     <div class="d-flex flex-column gap-2 position-relative">
                         <div class="media-wrapper position-relative ">
@@ -284,7 +288,7 @@
                                 -74%
                             </div>
                         </div>
-                        <div class="d-flex align-items-center gap-2">
+                        <div class="d-flex align-items-center  gap-2">
                             <div class="bg-dark-subtle d-flex position-relative" style="height:3px;width:50%">
                                 <div class="d-flex align-items-center position-absolute"
                                     style="top:50%;transform:translateY(-50%)">
@@ -293,11 +297,14 @@
                                 </div>
                             </div>
                             <h6 style="font-size:0.7rem">01:22:31:53</h6>
+                            <div class="self-align-end d-flex justify-content-end w-25">
+                                <i class="bi bi-cart-plus fs-4 self-align-end"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
+            </a>
             <?php 
                     }}
         ?>
@@ -309,7 +316,9 @@
 
 
 
-
+    <?php 
+                    include './boot_js.php';
+                ?>
 
 
     <script>
