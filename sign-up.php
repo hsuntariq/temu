@@ -19,6 +19,7 @@
              mysqli_query($connection,$insert);
              $_SESSION['username'] = $name;
              $_SESSION['unique_name'] = $username;
+             $_SESSION['user_id']= mysqli_insert_id($connection);
              header("Location: $base_url");
          } catch (Exception $e) {
             

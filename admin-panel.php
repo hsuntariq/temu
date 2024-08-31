@@ -1,3 +1,15 @@
+<?php 
+    session_start();
+    include './config.php';
+    
+        if(!isset($_SESSION['role']) || ($_SESSION['role'] != 'super-admin' && $_SESSION['role'] != 'admin')){
+        return http_response_code(404);
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +22,10 @@
 </head>
 
 <body>
+
+
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-2 col-lg-3 sidebar">

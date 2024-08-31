@@ -1,4 +1,4 @@
-<section class="p-3" style="background-color: #151B23;">
+<section class="p-3 top-bar" style="background-color: #151B23;">
 
     <nav class=" d-flex text-white position-relative  align-items-center" ">
         <i class=" bi bi-list fs-2 menu-icon"></i>

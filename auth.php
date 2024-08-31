@@ -65,7 +65,7 @@
         style="background-color: #F4F4F7;height:100vh">
 
         <div style="height: 517px;" class=" text-center card rounded-3 border-0 shadow-lg">
-            <ddiv class="d-flex justify-content-center align-items-center">
+            <div class="d-flex justify-content-center align-items-center">
 
                 <div class="left sign-in-form p-5 w-50 d-flex flex-column">
 
@@ -82,7 +82,7 @@
                     </p>
                     <form action="./login.php" method="POST">
 
-                        <input required type="email" name="email" placeholder="Enter your email..."
+                        <input required type="text" name="email" placeholder="Enter your email..."
                             class="form-control my-2" style="background-color: #F5F5F5;">
                         <input required type="password" name="password" placeholder="Enter your password..."
                             class="form-control mt-2" style="background-color: #F5F5F5;">
@@ -138,7 +138,7 @@
                         Sign Up
                     </button>
                 </div>
-            </ddiv </div>
+            </div </div>
 
 
         </div>

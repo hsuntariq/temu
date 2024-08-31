@@ -13,6 +13,21 @@
 </div>
 
 <ul class="list-unstyled fw-medium gap-4 d-flex flex-column p-4 text-white fs-5">
+    <?php
+        if($_SESSION['role'] == 'super-admin'){
+    ?>
+    <li>
+        <div class="dropdown">
+            <span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Admins
+            </span>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="./add-admins.php?n=Add Admins">Add Admins</a></li>
+                <li><a class="dropdown-item" href="#">view Admins</a></li>
+            </ul>
+        </div>
+    </li>
+    <?php }?>
     <li>
         <div class="dropdown">
             <span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
